@@ -1,0 +1,18 @@
+spring:
+  modulith:
+    events:
+      jdbc:
+        schema-initialization:
+          enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/leanmind
+    username: leanmind
+    password: leanmind
+  liquibase:
+    change-log: liquibase-changelog.xml
+logging:
+  level:
+    org:
+    springframework:
+      jdbc:
+        core: DEBUG

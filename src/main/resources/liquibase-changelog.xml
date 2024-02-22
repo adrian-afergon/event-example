@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+  <changeSet id="createTable" author="Adrian Ferrera">
+    <createTable tableName="product">
+      <column name="id" type="UUID">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="name" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="price" type="DECIMAL(10, 2)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="currency" type="VARCHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="insertData" author="Adrian Ferrera">
+    <sql>
+      INSERT INTO product (id, name, price, currency) VALUES ('2e80af96-7c3b-47a5-956f-2284ccebf373', 'T-Shirt', 10.00, 'USD');
+      INSERT INTO product (id, name, price, currency) VALUES ('bf5a5bf9-b6f6-4b40-a7a7-87f3c6287cb5', 'Trousers', 20.00, 'USD');
+    </sql>
+  </changeSet>
+
+  <changeSet id="createOrderTable" author="Adrian Ferrera">
+    <createTable tableName="order">
+      <column name="id" type="UUID">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="date" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <createTable tableName="order_product">
+      <column name="order_id" type="UUID">
+        <constraints nullable="false"/>
+      </column>
+      <column name="product_id" type="UUID">
+        <constraints nullable="false"/>
+      </column>
+      <column name="quantity" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="price" type="DECIMAL(10, 2)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="total" type="DECIMAL(10, 2)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="currency" type="VARCHAR(3)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <addPrimaryKey tableName="order_product" columnNames="order_id, product_id" />
+    <addForeignKeyConstraint
+      baseTableName="order_product"
+      baseColumnNames="order_id"
+      constraintName="fk_order_product_order_id"
+      referencedTableName="order"
+      referencedColumnNames="id"
+      onDelete="CASCADE"
+      onUpdate="CASCADE"/>
+  </changeSet>
+
+</databaseChangeLog>

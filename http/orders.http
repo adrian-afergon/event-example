@@ -1,0 +1,17 @@
+POST http://localhost:8080/orders
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": "3e1fda3d-fc8f-4650-b594-850156f323b3",
+  "items": [
+    {
+      "id": "2e80af96-7c3b-47a5-956f-2284ccebf373",
+      "quantity": 2
+    },
+    {
+      "id": "bf5a5bf9-b6f6-4b40-a7a7-87f3c6287cb5",
+      "quantity": 3
+    }
+  ]
+}
