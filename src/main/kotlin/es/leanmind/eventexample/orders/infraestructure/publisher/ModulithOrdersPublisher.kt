@@ -2,8 +2,8 @@ package es.leanmind.eventexample.orders.infraestructure.publisher
 
 import es.leanmind.eventexample.orders.application.publisher.OrdersPublisher
 import es.leanmind.eventexample.orders.domain.Order
-import es.leanmind.eventexample.orders.domain.OrderCreatedEvent
-import es.leanmind.eventexample.orders.domain.ProductEvent
+import es.leanmind.eventexample.shared.infraestructure.events.OrderCreatedEvent
+import es.leanmind.eventexample.shared.infraestructure.events.ProductEvent
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
@@ -33,7 +33,8 @@ class ModulithOrdersPublisher(events: ApplicationEventPublisher): OrdersPublishe
                 price = it.price,
                 total = it.total,
                 currency = it.currency
-            )}
+            )
+            }
         ))
     }
 }

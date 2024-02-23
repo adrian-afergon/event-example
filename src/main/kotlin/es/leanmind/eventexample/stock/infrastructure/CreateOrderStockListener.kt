@@ -1,6 +1,6 @@
 package es.leanmind.eventexample.stock.infrastructure
 
-import es.leanmind.eventexample.orders.domain.OrderCreatedEvent
+import es.leanmind.eventexample.shared.infraestructure.events.OrderCreatedEvent
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.modulith.events.ApplicationModuleListener

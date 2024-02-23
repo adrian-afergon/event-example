@@ -12,6 +12,12 @@ For the example we are going to use Modulith to publish the events, store it at 
 
 The orders and product information will be stored in a postgres database that can be started using `docker-compose`.
 
+> ⚠️ This NOT represent a **domain event system**.
+
+> ⚠️ This NOT **event sourcing system**.
+
+> ✅ This is a simple example of how to use events in a distributed system.
+
 ## Running the project
 
 To run the project, you will need to have `docker` and `docker-compose` installed.
